@@ -1,0 +1,19 @@
+# Two environments are needed; they cannot share one interpreter, because the CAD kernel bindings
+# (OCP, shipped with CadQuery) and the deep-learning stack pin incompatible libraries.
+#
+# 1) geometry: executes actions, builds solids, samples point clouds, computes the metrics
+#       cadquery==2.7.0          # brings OCP 7.8.1.1 (OpenCascade)
+#       trimesh>=4.0
+#       scipy>=1.11
+#       numpy>=1.24
+#       fiblat                   # Fibonacci lattices, used for the encoder's seed points
+#
+# 2) learning: trains and runs the model
+#       torch>=2.4
+#       transformers>=4.51
+#       pyarrow>=15            # parquet datasets
+#       pandas>=2.0
+#       tqdm
+#
+# The rollout runs both: the model in the learning environment, the kernel in a geometry
+# subprocess (see eval/geometry_worker.py and the GEOM_PYTHON / GPU_PYTHON variables in eval/run_eval.sh).
