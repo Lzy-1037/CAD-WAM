@@ -55,14 +55,6 @@ edge metric, and each metric keeps the normalisation of the work that introduced
 are counted in the invalidity ratio and excluded from the geometric metrics, so the two must be read
 together. `eval/paper_table.py` turns the resulting JSON files into a table.
 
-## What is not included
-
-- **Data and weights.** The DeepCAD release, the text annotations and all checkpoints come from their
-  public sources; `datagen/` rebuilds every derived dataset from them, and the evaluation id list is
-  provided so the test set can be reconstructed exactly.
-- **Baseline generation.** Scoring is protocol-neutral and lives here, but the scripts that drive each
-  baseline's own generation are not part of this repository.
-- **Figures.** The scripts that render the paper's figures are kept separately.
 
 ## Licence and attribution
 
